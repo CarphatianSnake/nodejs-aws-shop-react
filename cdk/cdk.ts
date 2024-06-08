@@ -1,5 +1,5 @@
 import * as cdk from "aws-cdk-lib";
-import { CloudFrontStack } from "../lib/cloudfront-stack";
+import { CloudFrontStack } from "./cloudfront-stack";
 
 const app = new cdk.App();
 
