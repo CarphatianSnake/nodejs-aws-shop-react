@@ -1,16 +1,11 @@
-import { Stack, StackProps, App } from "aws-cdk-lib";
-import { ShopStack } from "../lib/cdk-stack";
+import * as cdk from "aws-cdk-lib";
+import { CloudFrontStack } from "../lib/cloudfront-stack";
 
-class StaticShopStack extends Stack {
-  constructor(parent: App, id: string, props?: StackProps) {
-    super(parent, id, props);
+const app = new cdk.App();
 
-    new ShopStack(this, "ShopStack");
-  }
-}
-
-const app = new App();
-
-new StaticShopStack(app, "Shop");
-
-app.synth();
+new CloudFrontStack(app, "ShopBucket", {
+  env: {
+    account: process.env.AWS_ACCOUNT_NUMBER,
+    region: process.env.AWS_REGION,
+  },
+});

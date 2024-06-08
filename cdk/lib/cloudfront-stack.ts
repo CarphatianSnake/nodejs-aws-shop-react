@@ -1,13 +1,12 @@
-import { Stack, RemovalPolicy } from "aws-cdk-lib";
-import { aws_s3_deployment as s3Deploy } from "aws-cdk-lib";
+import * as cdk from 'aws-cdk-lib';
 import { aws_s3 as s3 } from "aws-cdk-lib";
-import { aws_iam as iam } from "aws-cdk-lib";
 import { aws_cloudfront as cloudfront } from "aws-cdk-lib";
-import { Construct } from "constructs";
+import { aws_iam as iam } from "aws-cdk-lib";
+import { Construct } from 'constructs';
 
-export class ShopStack extends Construct {
-  constructor(parent: Stack, id: string) {
-    super(parent, id);
+export class CloudFrontStack extends cdk.Stack {
+  constructor(scope: Construct, id: string, props?: cdk.StackProps) {
+    super(scope, id, props);
 
     const shopBucket = new s3.Bucket(this, "ShopBucket", {
       bucketName: "nodejs-aws-shop-react-carp-cdk",
@@ -15,7 +14,7 @@ export class ShopStack extends Construct {
       publicReadAccess: false,
       blockPublicAccess: s3.BlockPublicAccess.BLOCK_ALL,
       versioned: false,
-      removalPolicy: RemovalPolicy.DESTROY,
+      removalPolicy: cdk.RemovalPolicy.DESTROY,
       autoDeleteObjects: true,
     });
 
@@ -37,28 +36,5 @@ export class ShopStack extends Construct {
         },
       })
     );
-
-    const distribution = new cloudfront.CloudFrontWebDistribution(
-      this,
-      "ShopDistribution",
-      {
-        originConfigs: [
-          {
-            s3OriginSource: {
-              s3BucketSource: shopBucket,
-              originAccessIdentity: shopOai,
-            },
-            behaviors: [{ isDefaultBehavior: true }],
-          },
-        ],
-      }
-    );
-
-    new s3Deploy.BucketDeployment(this, "ShopDeployment", {
-      sources: [s3Deploy.Source.asset("../dist")],
-      destinationBucket: shopBucket,
-      distribution,
-      distributionPaths: ["/*"],
-    });
   }
 }
