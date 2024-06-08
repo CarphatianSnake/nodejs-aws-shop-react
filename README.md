@@ -21,7 +21,7 @@ This is frontend starter project for nodejs-aws mentoring program. It uses the f
 
 Access to s3 bucket is denied.
 
-### [CloudFront URL](https://d2uxca3sv4juzi.cloudfront.net/)
+### [CloudFront URL](https://d3ffym298mm09d.cloudfront.net/)
 
 ## Available Scripts
 
@@ -45,11 +45,11 @@ Runs tests in console, in browser or with coverage.
 
 Runs linting and formatting for all files in `src` folder.
 
-### `deploy`
+### `cdk:deploy`
 
 Runs builded web application deployment ot AWS.
 
-### `destroy`
+### `cdk:destroy`
 
 Destroys web application deployment on AWS.
 
