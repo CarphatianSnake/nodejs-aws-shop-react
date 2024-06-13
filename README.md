@@ -17,11 +17,9 @@ This is frontend starter project for nodejs-aws mentoring program. It uses the f
 
 ## Links to deployment
 
-### [S3 Bucket](https://nodejs-aws-shop-react-carp-cdk.s3.eu-west-1.amazonaws.com/index.html)
+#### [S3 Bucket](https://nodejs-aws-shop-react-carp-cdk.s3.eu-west-1.amazonaws.com/index.html)
 
-Access to s3 bucket is denied.
-
-### [CloudFront URL](https://d3ffym298mm09d.cloudfront.net/)
+#### [CloudFront URL](https://d3ffym298mm09d.cloudfront.net/)
 
 ## Available Scripts
 
@@ -47,7 +45,7 @@ Runs linting and formatting for all files in `src` folder.
 
 ### `cdk:deploy`
 
-Runs builded web application deployment ot AWS.
+Runs builded web application deployment to AWS.
 
 ### `cdk:destroy`
 
