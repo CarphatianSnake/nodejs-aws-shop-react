@@ -32,7 +32,7 @@ export default function CSVFileImport({ url, title }: CSVFileImportProps) {
         method: "GET",
         url,
         headers: {
-          'Authorization': `${localStorage.getItem('Authorization')}`
+          'Authorization': `${localStorage.getItem('authorization_token')}`
         },
         params: {
           name: encodeURIComponent(file.name),
