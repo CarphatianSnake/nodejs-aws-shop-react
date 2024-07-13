@@ -34,7 +34,7 @@ export default function CSVFileImport({ url, title }: CSVFileImportProps) {
       } = {};
 
       if (authorization_token) {
-        headers.Authorization = authorization_token;
+        headers.Authorization = `Basic ${authorization_token}`;
       }
 
       // Get the presigned URL
